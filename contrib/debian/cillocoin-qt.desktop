@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Cillocoin Core
+Comment=Connect to the Cillocoin P2P Network
+Comment[de]=Verbinde mit dem Cillocoin peer-to-peer Netzwerk
+Comment[fr]=Cillocoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Cillocoin, eşten eşe kriptografik sanal para birimi
+Exec=cillocoin-qt %u
+Terminal=false
+Type=Application
+Icon=cillocoin128
+MimeType=x-scheme-handler/cillocoin;
+Categories=Office;Finance;
+StartupWMClass=Cillocoin-qt

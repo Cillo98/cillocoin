@@ -1,0 +1,33 @@
+# /etc/conf.d/cillocoind: config file for /etc/init.d/cillocoind
+
+# Config file location
+#CILLOCOIND_CONFIGFILE="/etc/cillocoin/cillocoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $CILLOCOIND_USER)
+#CILLOCOIND_PIDDIR="/var/run/cillocoind"
+
+# What filename to give the pidfile
+#CILLOCOIND_PIDFILE="${CILLOCOIND_PIDDIR}/cillocoind.pid"
+
+# Where to write cillocoind data (be mindful that the blockchain is large)
+#CILLOCOIND_DATADIR="/var/lib/cillocoind"
+
+# User and group to own cillocoind process
+#CILLOCOIND_USER="cillocoin"
+#CILLOCOIND_GROUP="cillocoin"
+
+# Path to cillocoind executable
+#CILLOCOIND_BIN="/usr/bin/cillocoind"
+
+# Nice value to run cillocoind under
+#CILLOCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#CILLOCOIND_OPTS=""
+
+# The timeout in seconds OpenRC will wait for cillocoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+CILLOCOIND_SIGTERM_TIMEOUT=60

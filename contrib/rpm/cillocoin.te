@@ -1,0 +1,81 @@
+policy_module(cillocoin, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type cillocoin_t;
+type cillocoin_exec_t;
+init_daemon_domain(cillocoin_t, cillocoin_exec_t)
+
+permissive cillocoin_t;
+
+type cillocoin_initrc_exec_t;
+init_script_file(cillocoin_initrc_exec_t)
+
+type cillocoin_conf_t;
+files_type(cillocoin_conf_t)
+
+type cillocoin_var_lib_t;
+files_type(cillocoin_var_lib_t)
+
+type cillocoin_var_run_t;
+files_type(cillocoin_var_run_t)
+
+type cillocoin_port_t;
+corenet_port(cillocoin_port_t)
+
+########################################
+#
+# cillocoin local policy
+#
+allow cillocoin_t self:process { fork };
+
+allow cillocoin_t self:fifo_file rw_fifo_file_perms;
+allow cillocoin_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(cillocoin_t, cillocoin_conf_t, cillocoin_conf_t)
+manage_files_pattern(cillocoin_t, cillocoin_conf_t, cillocoin_conf_t)
+
+manage_dirs_pattern(cillocoin_t, cillocoin_var_lib_t, cillocoin_var_lib_t)
+manage_files_pattern(cillocoin_t, cillocoin_var_lib_t, cillocoin_var_lib_t)
+files_var_lib_filetrans(cillocoin_t, cillocoin_var_lib_t, { dir file })
+
+manage_dirs_pattern(cillocoin_t, cillocoin_var_run_t, cillocoin_var_run_t)
+manage_files_pattern(cillocoin_t, cillocoin_var_run_t, cillocoin_var_run_t)
+
+sysnet_dns_name_resolve(cillocoin_t)
+corenet_all_recvfrom_unlabeled(cillocoin_t)
+
+allow cillocoin_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(cillocoin_t)
+corenet_tcp_sendrecv_generic_node(cillocoin_t)
+corenet_tcp_sendrecv_all_ports(cillocoin_t)
+corenet_tcp_bind_generic_node(cillocoin_t)
+
+gen_require(`
+    type cillocoin_port_t;
+')
+allow cillocoin_t cillocoin_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type cillocoin_port_t;
+')
+allow cillocoin_t cillocoin_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(cillocoin_t)
+
+files_read_etc_files(cillocoin_t)
+
+miscfiles_read_localization(cillocoin_t)
+
+sysnet_dns_name_resolve(cillocoin_t)
+
+allow cillocoin_t cillocoin_exec_t:file execute_no_trans;
+allow cillocoin_t self:process setsched;
+corecmd_exec_ls(cillocoin_t)
+corenet_tcp_connect_http_port(cillocoin_t)
+dev_read_urand(cillocoin_t)
+fs_getattr_xattr_fs(cillocoin_t)
+kernel_read_system_state(cillocoin_t)

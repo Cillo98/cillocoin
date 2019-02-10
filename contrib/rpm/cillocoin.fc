@@ -1,0 +1,8 @@
+/usr/bin/cillocoin-cli		--	gen_context(system_u:object_r:cillocoin_exec_t,s0)
+/usr/sbin/cillocoind		--	gen_context(system_u:object_r:cillocoin_exec_t,s0)
+/usr/lib(64)?/cillocoin/cillocoind		--	gen_context(system_u:object_r:cillocoin_exec_t,s0)
+
+/etc/cillocoin(/.*)?		gen_context(system_u:object_r:cillocoin_conf_t,s0)
+/var/lib/cillocoin(/.*)?		gen_context(system_u:object_r:cillocoin_var_lib_t,s0)
+
+(/var)?/run/cillocoind(/.*)?   gen_context(system_u:object_r:cillocoin_var_run_t,s0)

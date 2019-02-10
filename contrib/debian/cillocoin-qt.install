@@ -1,0 +1,6 @@
+usr/local/bin/cillocoin-qt usr/bin
+share/pixmaps/cillocoin32.xpm usr/share/pixmaps
+share/pixmaps/cillocoin16.xpm usr/share/pixmaps
+share/pixmaps/cillocoin128.png usr/share/pixmaps
+debian/cillocoin-qt.desktop usr/share/applications
+debian/cillocoin-qt.protocol usr/share/kde4/services/

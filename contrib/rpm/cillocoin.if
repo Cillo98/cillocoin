@@ -1,0 +1,157 @@
+
+## <summary>policy for cillocoin</summary>
+
+
+########################################
+## <summary>
+##	Transition to cillocoin.
+## </summary>
+## <param name="domain">
+## <summary>
+##	Domain allowed to transition.
+## </summary>
+## </param>
+#
+interface(`cillocoin_domtrans',`
+	gen_require(`
+		type cillocoin_t, cillocoin_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	domtrans_pattern($1, cillocoin_exec_t, cillocoin_t)
+')
+
+
+########################################
+## <summary>
+##	Execute cillocoin server in the cillocoin domain.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`cillocoin_initrc_domtrans',`
+	gen_require(`
+		type cillocoin_initrc_exec_t;
+	')
+
+	init_labeled_script_domtrans($1, cillocoin_initrc_exec_t)
+')
+
+
+########################################
+## <summary>
+##	Search cillocoin lib directories.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`cillocoin_search_lib',`
+	gen_require(`
+		type cillocoin_var_lib_t;
+	')
+
+	allow $1 cillocoin_var_lib_t:dir search_dir_perms;
+	files_search_var_lib($1)
+')
+
+########################################
+## <summary>
+##	Read cillocoin lib files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`cillocoin_read_lib_files',`
+	gen_require(`
+		type cillocoin_var_lib_t;
+	')
+
+	files_search_var_lib($1)
+	read_files_pattern($1, cillocoin_var_lib_t, cillocoin_var_lib_t)
+')
+
+########################################
+## <summary>
+##	Manage cillocoin lib files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`cillocoin_manage_lib_files',`
+	gen_require(`
+		type cillocoin_var_lib_t;
+	')
+
+	files_search_var_lib($1)
+	manage_files_pattern($1, cillocoin_var_lib_t, cillocoin_var_lib_t)
+')
+
+########################################
+## <summary>
+##	Manage cillocoin lib directories.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`cillocoin_manage_lib_dirs',`
+	gen_require(`
+		type cillocoin_var_lib_t;
+	')
+
+	files_search_var_lib($1)
+	manage_dirs_pattern($1, cillocoin_var_lib_t, cillocoin_var_lib_t)
+')
+
+
+########################################
+## <summary>
+##	All of the rules required to administrate
+##	a cillocoin environment
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+## <param name="role">
+##	<summary>
+##	Role allowed access.
+##	</summary>
+## </param>
+## <rolecap/>
+#
+interface(`cillocoin_admin',`
+	gen_require(`
+		type cillocoin_t;
+		type cillocoin_initrc_exec_t;
+		type cillocoin_var_lib_t;
+	')
+
+	allow $1 cillocoin_t:process { ptrace signal_perms };
+	ps_process_pattern($1, cillocoin_t)
+
+	cillocoin_initrc_domtrans($1)
+	domain_system_change_exemption($1)
+	role_transition $2 cillocoin_initrc_exec_t system_r;
+	allow $2 system_r;
+
+	files_search_var_lib($1)
+	admin_pattern($1, cillocoin_var_lib_t)
+
+')
+

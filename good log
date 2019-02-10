@@ -1,0 +1,116 @@
+__________________________________________________________________________________
+										  |
+From node that has 0 blocks (genesis only). It uses port 5002 and listens on 5001 |
+__________________________________________________________________________________|
+
+##  It says peer=13 because it's the 14th time it tries to connect to the same node on port 5003.
+##  This is the second spawned node
+
+2019-01-28 18:49:37 trying connection 127.0.0.1:5003 lastseen=0.0hrs
+2019-01-28 18:49:37 Added connection peer=13
+2019-01-28 18:49:37 sending version (102 bytes) peer=13
+2019-01-28 18:49:37 send version message: version 70015, blocks=0, us=[::]:0, peer=13
+2019-01-28 18:50:07 socket closed
+2019-01-28 18:50:07 disconnecting peer=13
+2019-01-28 18:50:07 Cleared nodestate for peer=13
+
+
+
+__________________________________________________________________________________
+										  |
+From node that has 0 blocks (genesis only). It uses port 5004 and listens on 5005 |
+__________________________________________________________________________________|
+
+##  By chance this is again the 13th try of this node. I ran them one after the other so they
+##  connect almost at the same time
+##  This is the third spawned node
+
+2019-01-28 18:49:41 trying connection 127.0.0.1:5003 lastseen=0.0hrs
+2019-01-28 18:49:41 Added connection peer=13
+2019-01-28 18:49:41 sending version (102 bytes) peer=13
+2019-01-28 18:49:41 send version message: version 70015, blocks=0, us=[::]:0, peer=13
+2019-01-28 18:50:11 socket closed
+2019-01-28 18:50:11 disconnecting peer=13
+2019-01-28 18:50:11 Cleared nodestate for peer=13
+
+
+
+__________________________________________________________________________________________
+											  |
+From node that has 10 blocks (11 with the genesis). It uses port 5004 and listens on 5003 |
+__________________________________________________________________________________________|
+
+##  This is the first spawned node
+
+2019-01-28 18:49:37 libevent: epoll_dispatch: epoll_wait reports 1
+2019-01-28 18:49:37 libevent: event_active: 0x56054086d0c8 (fd 9), res 2, callback 0x7fa12fea80d0
+2019-01-28 18:49:37 libevent: event_process_active: event: 0x56054086d0c8, EV_READ   call 0x7fa12fea80d0
+2019-01-28 18:49:37 libevent: evhttp_get_request_connection: new request from 127.0.0.1:33612 on 19
+
+2019-01-28 18:49:37 libevent: Attempting connection to 127.0.0.1:33612
+
+2019-01-28 18:49:37 libevent: event_add: event: 0x7fa108004cc0 (fd -1), EV_READ    call 0x7fa12fe99d40
+2019-01-28 18:49:37 libevent: event_del: 0x7fa108004d40 (fd -1), callback 0x7fa12fe99920
+2019-01-28 18:49:37 libevent: event_del: 0x7fa108004cc0 (fd -1), callback 0x7fa12fe99d40
+2019-01-28 18:49:37 libevent: event_del: 0x7fa108004d40 (fd -1), callback 0x7fa12fe99920
+2019-01-28 18:49:37 libevent: event_add: event: 0x7fa108004cc0 (fd 19), EV_READ    call 0x7fa12fe99d40
+2019-01-28 18:49:37 libevent: Epoll ADD(1) on fd 19 okay. Old events were 0; read change was 1 (add); write change was 0 (none); close change was 0 (none)
+2019-01-28 18:49:37 libevent: event_add: event: 0x7fa108004cc0 (fd 19), EV_READ   EV_TIMEOUT call 0x7fa12fe99d40
+2019-01-28 18:49:37 libevent: event_add: event 0x7fa108004cc0, timeout in 30 seconds 0 useconds, call 0x7fa12fe99d40
+2019-01-28 18:49:37 libevent: event_del: 0x7fa108004d40 (fd 19), callback 0x7fa12fe99920
+2019-01-28 18:49:37 libevent: event_add: event: 0x7fa108004cc0 (fd 19), EV_READ   EV_TIMEOUT call 0x7fa12fe99d40
+2019-01-28 18:49:37 libevent: event_add: event 0x7fa108004cc0, timeout in 30 seconds 0 useconds, call 0x7fa12fe99d40
+2019-01-28 18:49:37 libevent: timeout_next: event: 0x7fa108004cc0, in 30 seconds, 0 useconds
+2019-01-28 18:49:37 libevent: epoll_dispatch: epoll_wait reports 1
+2019-01-28 18:49:37 libevent: event_active: 0x7fa108004cc0 (fd 19), res 2, callback 0x7fa12fe99d40
+2019-01-28 18:49:37 libevent: event_process_active: event: 0x7fa108004cc0, EV_READ   call 0x7fa12fe99d40
+2019-01-28 18:49:37 libevent: event_add: event: 0x7fa108004cc0 (fd 19), EV_READ   EV_TIMEOUT call 0x7fa12fe99d40
+2019-01-28 18:49:37 libevent: event_add: event 0x7fa108004cc0, timeout in 5384 seconds 835300 useconds, call 0x7fa12fe99d40
+2019-01-28 18:49:37 libevent: timeout_next: event: 0x7fa108004cc0, in 30 seconds, 0 useconds
+2019-01-28 18:49:41 libevent: epoll_dispatch: epoll_wait reports 1
+2019-01-28 18:49:41 libevent: event_active: 0x56054086d0c8 (fd 9), res 2, callback 0x7fa12fea80d0
+2019-01-28 18:49:41 libevent: event_process_active: event: 0x56054086d0c8, EV_READ   call 0x7fa12fea80d0
+2019-01-28 18:49:41 libevent: evhttp_get_request_connection: new request from 127.0.0.1:33614 on 27
+
+2019-01-28 18:49:41 libevent: Attempting connection to 127.0.0.1:33614
+
+2019-01-28 18:49:41 libevent: event_add: event: 0x7fa108006340 (fd -1), EV_READ    call 0x7fa12fe99d40
+2019-01-28 18:49:41 libevent: event_del: 0x7fa1080063c0 (fd -1), callback 0x7fa12fe99920
+2019-01-28 18:49:41 libevent: event_del: 0x7fa108006340 (fd -1), callback 0x7fa12fe99d40
+2019-01-28 18:49:41 libevent: event_del: 0x7fa1080063c0 (fd -1), callback 0x7fa12fe99920
+2019-01-28 18:49:41 libevent: event_add: event: 0x7fa108006340 (fd 27), EV_READ    call 0x7fa12fe99d40
+2019-01-28 18:49:41 libevent: Epoll ADD(1) on fd 27 okay. Old events were 0; read change was 1 (add); write change was 0 (none); close change was 0 (none)
+2019-01-28 18:49:41 libevent: event_add: event: 0x7fa108006340 (fd 27), EV_READ   EV_TIMEOUT call 0x7fa12fe99d40
+2019-01-28 18:49:41 libevent: event_add: event 0x7fa108006340, timeout in 30 seconds 0 useconds, call 0x7fa12fe99d40
+2019-01-28 18:49:41 libevent: event_del: 0x7fa1080063c0 (fd 27), callback 0x7fa12fe99920
+2019-01-28 18:49:41 libevent: event_add: event: 0x7fa108006340 (fd 27), EV_READ   EV_TIMEOUT call 0x7fa12fe99d40
+2019-01-28 18:49:41 libevent: event_add: event 0x7fa108006340, timeout in 30 seconds 0 useconds, call 0x7fa12fe99d40
+2019-01-28 18:49:41 libevent: timeout_next: event: 0x7fa108004cc0, in 26 seconds, 140076 useconds
+2019-01-28 18:49:41 libevent: epoll_dispatch: epoll_wait reports 1
+2019-01-28 18:49:41 libevent: event_active: 0x7fa108006340 (fd 27), res 2, callback 0x7fa12fe99d40
+2019-01-28 18:49:41 libevent: event_process_active: event: 0x7fa108006340, EV_READ   call 0x7fa12fe99d40
+2019-01-28 18:49:41 libevent: event_add: event: 0x7fa108006340 (fd 27), EV_READ   EV_TIMEOUT call 0x7fa12fe99d40
+2019-01-28 18:49:41 libevent: event_add: event 0x7fa108006340, timeout in 5388 seconds 695224 useconds, call 0x7fa12fe99d40
+2019-01-28 18:49:41 libevent: timeout_next: event: 0x7fa108004cc0, in 26 seconds, 140076 useconds
+2019-01-28 18:50:07 libevent: epoll_dispatch: epoll_wait reports 0
+2019-01-28 18:50:07 libevent: event_del: 0x7fa108004cc0 (fd 19), callback 0x7fa12fe99d40
+2019-01-28 18:50:07 libevent: Epoll DEL(1) on fd 19 okay. Old events were 2; read change was 2 (del); write change was 0 (none); close change was 0 (none)
+2019-01-28 18:50:07 libevent: timeout_process: event: 0x7fa108004cc0, call 0x7fa12fe99d40
+2019-01-28 18:50:07 libevent: event_active: 0x7fa108004cc0 (fd 19), res 1, callback 0x7fa12fe99d40
+2019-01-28 18:50:07 libevent: event_process_active: event: 0x7fa108004cc0,    call 0x7fa12fe99d40
+2019-01-28 18:50:07 libevent: event_add: event: 0x7fa108004cc0 (fd 19), EV_READ   EV_TIMEOUT call 0x7fa12fe99d40
+2019-01-28 18:50:07 libevent: Epoll ADD(1) on fd 19 okay. Old events were 0; read change was 1 (add); write change was 0 (none); close change was 0 (none)
+2019-01-28 18:50:07 libevent: event_add: event 0x7fa108004cc0, timeout in 5414 seconds 835300 useconds, call 0x7fa12fe99d40
+2019-01-28 18:50:07 libevent: event_del: 0x7fa108004cc0 (fd 19), callback 0x7fa12fe99d40
+2019-01-28 18:50:07 libevent: Epoll DEL(1) on fd 19 okay. Old events were 2; read change was 2 (del); write change was 0 (none); close change was 0 (none)
+2019-01-28 18:50:07 libevent: event_del: 0x7fa108004cc0 (fd 19), callback 0x7fa12fe99d40
+2019-01-28 18:50:07 libevent: event_del: 0x7fa108004d40 (fd 19), callback 0x7fa12fe99920
+2019-01-28 18:50:07 libevent: event_del: 0x7fa108004cc0 (fd 19), callback 0x7fa12fe99d40
+2019-01-28 18:50:07 libevent: event_del: 0x7fa108004d40 (fd 19), callback 0x7fa12fe99920
+2019-01-28 18:50:07 libevent: event_callback_finalize_many_: 3 events finalizing
+2019-01-28 18:50:07 libevent: event_del: 0x7fa108004cc0 (fd 19), callback 0x7fa12fe99d40
+2019-01-28 18:50:07 libevent: event_del: 0x7fa108004d40 (fd 19), callback 0x7fa12fe99920
+2019-01-28 18:50:07 libevent: event_process_active: event: 0x7fa108004cc0,    call 0x7fa12fe95b20
+2019-01-28 18:50:07 libevent: timeout_next: event: 0x7fa108006340, in 3 seconds, 832518 useconds
+
+
