@@ -1,0 +1,62 @@
+Genesis block generation:
+
+python genesis.py -z "25 Jan 2019 Roger Stone, Adviser to Trump, Is Indicted in Mueller Investigation" -t 1549020806 -n 3500000000
+04ffff001d01044c4f3235204a616e203230313920526f6765722053746f6e652c204164766973657220746f205472756d702c20497320496e64696374656420696e204d75656c6c657220496e7665737469676174696f6e
+algorithm: SHA256
+merkle hash: 3e096b1c4e463bc9a255b589c6a96b24b8e70fdc987db3114f48681faa11a92c
+pszTimestamp: 25 Jan 2019 Roger Stone, Adviser to Trump, Is Indicted in Mueller Investigation
+pubkey: 04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f
+time: 1549020806
+bits: 0x1d00ffff
+Searching for genesis hash..
+96603.0 hash/s, estimate: 12.3 hgenesis hash found!
+nonce: 3611490623
+genesis hash: 00000000493a4815341f1de129b1be9dfd854d58d1041b75349bb7d89d6a91df
+________________________________________________________________________________________________________________________________________________________________________________
+
+Addresses in use
+
+Node 1:
+address			3CLDqPd3SndDiVYSz146cztpsdAegW2DLx
+address			1CuYAty3hDzBE1369495zrTcVutCXpun8S
+
+Node 2:
+address			39bijjCeXeFNb8Er5m3ZGApvD4Zmo7YYCC
+address			3FgGHSWHbThuizEwjiYrsH2Xca8refwSkT
+
+Node 3:
+address			3LTiSFGbUwNNhTJy1Jh8vzKZXnFwNJqYmS		
+________________________________________________________________________________________________________________________________________________________________________________
+
+Start mining:
+
+./minerd --user rpcuser --pass 111111 --url http://127.0.0.1:5001/ --threads 2 --coinbase-addr 1CuYAty3hDzBE1369495zrTcVutCXpun8S --coinbase-sig "my test coins" -a sha256d -D --retry-pause=2
+
+./minerd --user rpcuser --pass 111111 --url http://127.0.0.1:5001/ --threads 2 --coinbase-sig "my test coins" -a sha256d -D --retry-pause=2
+________________________________________________________
+
+Start a node:
+
+./cillocoind -datadir=../configs/1 -debug=1
+________________________________________________________
+
+Get a transaction info:
+
+./cillocoin-cli -datadir=../configs/2 decoderawtransaction $(./cillocoin-cli -datadir=../configs/2 getrawtransaction 530b6ecfeaabd537ea2a1935099359d4f705d841b9e259a7d726bf7e15f40267)
+________________________________________________________
+
+Send money:
+./cillocoin-cli -datadir=../configs/1 sendtoaddress "ADDRESS" 5 "5 CLC from node 1 to 3"
+
+________________________________________________________
+
+Mined 27 or so blocks sending him rewards:
+address			1CuYAty3hDzBE1369495zrTcVutCXpun8S
+private key (WIF)	5JUoPvS3ZprJQ2DTyZEsEEr9GTPtGwUwK2Wmftvx5Qfo8pJE2Ao
+private key (HEX)	57736aac533a23109b376d33c17a6dd46680ea5bb3144545473063df11d9e8c9
+public key (HEX) (non-hashed)
+		04c56fb0509bf07548df12f222bef5932708f68ce1a57253a88599a8397a0514e3d2db55f4b428f90a1cf241a88eb8e79794ed53163679fcb7a220209f1a5bfce1
+
+
+Line 2138 of validation.cpp contains the method called when a new chain tip is found. Can add extra logging here?
+

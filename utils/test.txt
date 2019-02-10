@@ -1,0 +1,19 @@
+FIRST TEST
+
+2 + 2 Nodes
+
+In first net a node mines with 1 thread
+In second net a node mines with 2 treads
+
+After a couple of block differences, the two nets are connected by connecting
+a mining node to a non-mining node (because why not)
+
+*** Status of the blockchain before merging
+
+NET 1
+Nodes 1 and 2 have 46 blocks each. Some transactions between the nodes happened
+
+NET 2
+Nodes 3 and 4 have 41 blocks each. Some transactions between the nodes happened
+
+The two blockchains have different block hash values. Connection is between node 2 and node 3 (2 was non-mining, 3 mined few blocks)
