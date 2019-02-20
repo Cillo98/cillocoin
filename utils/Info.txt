@@ -60,3 +60,7 @@ public key (HEX) (non-hashed)
 
 Line 2138 of validation.cpp contains the method called when a new chain tip is found. Can add extra logging here?
 
+The method ProcessMessage([]) in net_processing.cpp handles received data, transactions included. To stop transactions from spreading
+it is possible to make the function return immediately. This would make a node ignore all incoming transactions. See line 2111 in that file
+Can also block incoming blocks, see line 2622 of the same file
+
