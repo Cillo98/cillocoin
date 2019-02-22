@@ -64,3 +64,5 @@ The method ProcessMessage([]) in net_processing.cpp handles received data, trans
 it is possible to make the function return immediately. This would make a node ignore all incoming transactions. See line 2111 in that file
 Can also block incoming blocks, see line 2622 of the same file
 
+net_processing.cpp line 3267 is the condition to send transactions. Can alter it to send transactions at will. See line 3417 too.
+Line 3612 same thing but for blocks
